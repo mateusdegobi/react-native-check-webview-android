@@ -1,20 +1,23 @@
 package com.checkwebviewandroid
 
-import android.graphics.Color
-import android.view.View
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
+import android.webkit.WebView
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.Promise
 
-class CheckWebviewAndroidViewManager : SimpleViewManager<View>() {
-  override fun getName() = "CheckWebviewAndroidView"
+class CheckWebviewAndroidView(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+    override fun getName(): String {
+        return "CheckWebviewAndroidView"
+    }
 
-  override fun createViewInstance(reactContext: ThemedReactContext): View {
-    return View(reactContext)
-  }
-
-  @ReactProp(name = "color")
-  fun setColor(view: View, color: String) {
-    view.setBackgroundColor(Color.parseColor(color))
-  }
+    @ReactMethod
+    fun checkWebView(promise: Promise) {
+        try {
+            WebView(reactApplicationContext)
+            promise.resolve(true)
+        } catch (e: Exception) {
+            promise.resolve(false)
+        }
+    }
 }
