@@ -13,11 +13,13 @@ class CheckWebviewAndroidView(reactContext: ReactApplicationContext) : ReactCont
 
     @ReactMethod
     fun checkWebView(promise: Promise) {
-        try {
-            WebView(reactApplicationContext)
-            promise.resolve(true)
-        } catch (e: Exception) {
-            promise.resolve(false)
+        Handler(Looper.getMainLooper()).post {
+            try {
+                WebView(reactApplicationContext)
+                promise.resolve(true)
+            } catch (e: Exception) {
+                promise.resolve(false)
+            }
         }
     }
 }
