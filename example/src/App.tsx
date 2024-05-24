@@ -1,14 +1,16 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { CheckWebviewAndroidView } from 'react-native-check-webview-android';
+import checkWebviewAndroidView from 'react-native-check-webview-android';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <CheckWebviewAndroidView color="#32a852" style={styles.box} />
-    </View>
-  );
+  React.useEffect(() => {
+    checkWebviewAndroidView().then((result) => {
+      console.log('checkWebviewAndroidView', result);
+    });
+  }, []);
+
+  return <View style={styles.container} />;
 }
 
 const styles = StyleSheet.create({

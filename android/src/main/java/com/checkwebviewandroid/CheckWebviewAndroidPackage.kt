@@ -8,10 +8,10 @@ import com.facebook.react.uimanager.ViewManager
 
 class CheckWebviewAndroidPackage : ReactPackage {
   override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-    return emptyList()
-  }
+        return listOf(CheckWebviewAndroidView(reactContext))
+    }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    return listOf(CheckWebviewAndroidView())
+      return emptyList()
   }
 }
