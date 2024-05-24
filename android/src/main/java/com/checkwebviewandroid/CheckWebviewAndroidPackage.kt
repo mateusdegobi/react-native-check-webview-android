@@ -12,6 +12,6 @@ class CheckWebviewAndroidPackage : ReactPackage {
   }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-    return listOf(CheckWebviewAndroidViewManager())
+    return listOf(CheckWebviewAndroidView())
   }
 }
