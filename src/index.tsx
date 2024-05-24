@@ -18,9 +18,11 @@ type CheckWebviewAndroidProps = {
 
 const ComponentName = 'CheckWebviewAndroidView';
 
-export const CheckWebviewAndroidView =
+const checkWebviewAndroidView =
   UIManager.getViewManagerConfig(ComponentName) != null
     ? requireNativeComponent<CheckWebviewAndroidProps>(ComponentName)
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+export default checkWebviewAndroidView;
